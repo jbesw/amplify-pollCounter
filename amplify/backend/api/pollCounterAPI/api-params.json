@@ -1,0 +1,34 @@
+{
+    "paths": [
+        {
+            "name": "/votes",
+            "lambdaFunction": "pollCounterFunction",
+            "privacy": {
+                "open": true
+            }
+        }
+    ],
+    "resourceName": "pollCounterAPI",
+    "apiName": "pollCounterAPI",
+    "functionArns": [
+        {
+            "lambdaFunction": "pollCounterFunction"
+        }
+    ],
+    "privacy": {
+        "auth": 0,
+        "unauth": 0,
+        "authRoleName": "pollcounter-dev-20190604142028-authRole",
+        "unAuthRoleName": "pollcounter-dev-20190604142028-unauthRole"
+    },
+    "dependsOn": [
+        {
+            "category": "function",
+            "resourceName": "pollCounterFunction",
+            "attributes": [
+                "Name",
+                "Arn"
+            ]
+        }
+    ]
+}

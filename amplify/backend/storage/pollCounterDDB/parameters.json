@@ -1,0 +1,7 @@
+{
+    "tableName": "pollCounterDDB",
+    "partitionKeyName": "partitionKey",
+    "partitionKeyType": "S",
+    "sortKeyName": "sortKey",
+    "sortKeyType": "S"
+}
