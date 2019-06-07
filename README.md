@@ -6,6 +6,12 @@ This code is provided without any warranty. You are responsible for any AWS char
 
 Read more about [AWS Amplify](https://aws-amplify.github.io/docs/js/api).
 
+Deploy this app to your AWS account with a single click:
+
+[![amplifybutton](https://oneclick.amplifyapp.com/button.svg)](https://console.aws.amazon.com/amplify/home#/deploy?repo=https://github.com/aws-samples/create-react-app-auth-amplify)
+
+The Amplify Console will fork this repo in your GitHub account, and then build and deploy your backend and frontend in a single workflow. Your app will be available at `https://master.appid.amplifyapp.com`.
+
 ## Project setup
 ```
 npm install
