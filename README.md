@@ -4,7 +4,8 @@ A (very) simple Vue application to enable voting across large numbers of users. 
 
 This code is provided without any warranty. You are responsible for any AWS charges you incur. This is only provided for educational purposes.
 
-Read more about [AWS Amplify](https://aws-amplify.github.io/docs/js/api).
+- Read more about [AWS Amplify](https://aws-amplify.github.io/docs/js/api). 
+- Read the tutorial accompanying this code: https://itnext.io/build-a-voting-website-that-doesnt-crash-part-two-now-with-amplify-9e4746b757e7.
 
 Deploy this app to your AWS account with a single click:
 
