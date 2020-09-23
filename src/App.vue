@@ -16,7 +16,7 @@
         </b-card>
 
         <b-card bg-variant="danger" text-variant="white" header="Vote Bobby Newport" class="text-center" footer-tag="footer">
-          <b-card-text>Nick Newport</b-card-text>
+          <b-card-text>Bobby Newport</b-card-text>
           <b-button size="lg" variant="primary" @click="vote('no')">Button</b-button>
           <em slot="footer">{{ votesNo }} voted</em>
         </b-card>
