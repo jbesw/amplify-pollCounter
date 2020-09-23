@@ -33,22 +33,22 @@ export default {
   data() {
     return {
       apiName: 'pollCounterAPI',
-      vote: '',
+      voteFor: '',
       email: '',
       tel: ''
     }
   },
   methods: {
-    vote: async function (vote, email, tel) {
+    vote: async function (voteFor, email, tel) {
       const init = {
         queryStringParameters: {
-          vote,
+          voteFor,
           email,
           tel
         }
       }
       const response = await API.post(this.apiName, '/votes', init)
-      this.$refs.responseText.innerText = email + ', thank you for voting for ' + vote;
+      this.$refs.responseText.innerText = email + ', thank you for voting for ' + voteFor;
     }
   }
 }
