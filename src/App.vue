@@ -12,12 +12,12 @@
       <b-card-group deck>
         <b-card bg-variant="success" text-variant="white" header="Vote Leslie Knope" class="text-center" footer-tag="footer">
           <b-card-text>Leslie Knope</b-card-text>
-          <b-button size="lg" variant="primary"  @click="vote('Leslie', '{{ email }}', '{{ tel }}')">Button</b-button>
+          <b-button size="lg" variant="primary"  @click="vote('Leslie', email, tel)">Button</b-button>
         </b-card>
 
         <b-card bg-variant="danger" text-variant="white" header="Vote Bobby Newport" class="text-center" footer-tag="footer">
           <b-card-text>Bobby Newport</b-card-text>
-          <b-button size="lg" variant="primary" @click="vote('Bobby', '{{ email }}', '{{ tel }}')">Button</b-button>
+          <b-button size="lg" variant="primary" @click="vote('Bobby', email, tel)">Button</b-button>
         </b-card>
       </b-card-group>
     </b-row>
