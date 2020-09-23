@@ -139,15 +139,12 @@ app.get(path + '/object' + hashKeyPath + sortKeyPath, function(req, res) {
 /************************************
 * HTTP post method for insert object *
 *************************************/
-
 app.post(path, function(req, res) {
-  
   if (userIdPresent) {
-    req.body['userId'] = req.apiGateway.event.requestContext.identity.cognitoIdentityId || UNAUTH;
+   req.body['userId'] =
+   req.apiGateway.event.requestContext.identity.cognitoIdentityId || UNAUTH;
   }
-
   const UpdateAttribute = req.query['vote'] === 'no' ? 'votesNo' : 'votesYes'
-
   let updateItemParams = {
     TableName: tableName,
     Key: {
@@ -156,16 +153,15 @@ app.post(path, function(req, res) {
     },
     UpdateExpression: `set ${UpdateAttribute} = ${UpdateAttribute} + :val`,
     ExpressionAttributeValues:{
-        ":val": 1
+      ":val": 1
     },
-    ReturnValues:"UPDATED_NEW"    
+    ReturnValues:"UPDATED_NEW"
   }
-
   dynamodb.update(updateItemParams, (err, data) => {
     if(err) {
       res.statusCode = 500;
       res.json({error: err, url: req.url, body: req.body});
-    } else{
+    } else {
       res.json({success: 'post call succeed!', url: req.url, data: data})
     }
   })

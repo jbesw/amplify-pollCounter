@@ -1,27 +1,26 @@
 <template>
   <div id="app" class="hello">
 
-    <h1>Welcome to the Serverless Voting App. Now with Amplify!</h1>
-    <h4>Click to vote on this very important issue.</h4>
-    <h4>You can vote as many times as you like. Click away!</h4>
+    <h1>Welcome to the Pawnee Town Council Election</h1>
+    <h4>Please follow the steps below to register your vote</h4>
+    
+    <h4>First, take a head and shoulders picture to prove who you are.</h4>
+    <b-file accept="image/*" capture="camera" />
 
     <b-row align-h="center" class="mt-5">
       <b-card-group deck>
-        <b-card bg-variant="success" text-variant="white" header="Vote Yes" class="text-center" footer-tag="footer">
-          <b-card-text>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</b-card-text>
+        <b-card bg-variant="success" text-variant="white" header="Vote Leslie Knope" class="text-center" footer-tag="footer">
+          <b-card-text>Leslie Knope</b-card-text>
           <b-button size="lg" variant="primary"  @click="vote('yes')">Button</b-button>
           <em slot="footer">{{ votesYes }} voted</em>
         </b-card>
 
-        <b-card bg-variant="danger" text-variant="white" header="Vote No" class="text-center" footer-tag="footer">
-          <b-card-text>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</b-card-text>
+        <b-card bg-variant="danger" text-variant="white" header="Vote Bobby Newport" class="text-center" footer-tag="footer">
+          <b-card-text>Nick Newport</b-card-text>
           <b-button size="lg" variant="primary" @click="vote('no')">Button</b-button>
           <em slot="footer">{{ votesNo }} voted</em>
         </b-card>
       </b-card-group>
-    </b-row>
-    <b-row align-h="center" class="mt-5">
-      <p>Questions? Ask James <a href="https://twitter.com/jbesw">@jbesw</a>.</p>
     </b-row>
   </div>  
 </template>
