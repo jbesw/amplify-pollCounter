@@ -144,16 +144,19 @@ app.post(path, function(req, res) {
    req.body['userId'] =
    req.apiGateway.event.requestContext.identity.cognitoIdentityId || UNAUTH;
   }
-  const UpdateAttribute = req.query['vote'] === 'no' ? 'votesNo' : 'votesYes'
+  const UpdateAttribute = req.query['vote']
+  const EmailAddress = req.query['email']
+  const TelephoneNumber = req.query['tel']
   let updateItemParams = {
     TableName: tableName,
     Key: {
       partitionKey: 'poll-001',
-      sortKey: 'total'
+      sortKey: EmailAddress
     },
-    UpdateExpression: `set ${UpdateAttribute} = ${UpdateAttribute} + :val`,
+    UpdateExpression: `set vote = :v, tel = :t`,
     ExpressionAttributeValues:{
-      ":val": 1
+      ":v": UpdateAttribute,
+      ":t": TelephoneNumber
     },
     ReturnValues:"UPDATED_NEW"
   }

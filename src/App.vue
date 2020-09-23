@@ -4,24 +4,24 @@
     <h1>Welcome to the Pawnee Town Council Election</h1>
     <h4>Please follow the steps below to register your vote</h4>
     
-    <h4>First, take a head and shoulders picture to prove who you are.</h4>
-    <b-file accept="image/*" capture="camera" />
+    <h4>Please enter your email address and telephone number</h4>
+    <b-form-input type="email" placeholder="Email address" v-model="email" /> <br>
+    <b-form-input type="tel" placeholder="Telephone Number" v-model="tel" /> <br>
 
     <b-row align-h="center" class="mt-5">
       <b-card-group deck>
         <b-card bg-variant="success" text-variant="white" header="Vote Leslie Knope" class="text-center" footer-tag="footer">
           <b-card-text>Leslie Knope</b-card-text>
-          <b-button size="lg" variant="primary"  @click="vote('yes')">Button</b-button>
-          <em slot="footer">{{ votesYes }} voted</em>
+          <b-button size="lg" variant="primary"  @click="vote('Leslie')">Button</b-button>
         </b-card>
 
         <b-card bg-variant="danger" text-variant="white" header="Vote Bobby Newport" class="text-center" footer-tag="footer">
           <b-card-text>Bobby Newport</b-card-text>
-          <b-button size="lg" variant="primary" @click="vote('no')">Button</b-button>
-          <em slot="footer">{{ votesNo }} voted</em>
+          <b-button size="lg" variant="primary" @click="vote('Bobby')">Button</b-button>
         </b-card>
       </b-card-group>
     </b-row>
+    <h1 ref="responseText"></h1>
   </div>  
 </template>
 
@@ -33,30 +33,23 @@ export default {
   data() {
     return {
       apiName: 'pollCounterAPI',
-      votesYes: 0,
-      votesNo: 0
+      vote: '',
+      email: '',
+      tel: ''
     }
   },
   methods: {
     vote: async function (vote) {
       const init = {
         queryStringParameters: {
-          vote
+          vote,
+          this.email,
+          this.tel
         }
       }
       const response = await API.post(this.apiName, '/votes', init)
-      if (vote === 'yes') this.votesYes = response.data.Attributes.votesYes
-      if (vote === 'no') this.votesNo = response.data.Attributes.votesNo
-    },
-    updateVotes: async function () {
-      const response = await API.get(this.apiName, '/votes/poll-001')
-      this.votesNo = response[0].votesNo
-      this.votesYes = response[0].votesYes    
+      this.$refs.responseText.innerText = email + ', thank you for voting for ' + vote;
     }
-  },
-  created () {
-    this.updateVotes()
-    setInterval(this.updateVotes, 3000)
   }
 }
 </script>
