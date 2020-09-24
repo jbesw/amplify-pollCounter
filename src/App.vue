@@ -10,14 +10,14 @@
 
     <b-row align-h="center" class="mt-5">
       <b-card-group deck>
-        <b-card bg-variant="success" text-variant="white" header="Vote Leslie Knope" class="text-center" footer-tag="footer">
-          <b-card-text>Leslie Knope</b-card-text>
-          <b-button size="lg" variant="primary"  @click="vote('Leslie', email, tel)">Button</b-button>
+        <b-card bg-variant="primary" text-variant="white" header="Democrat" class="text-center" footer-tag="footer">
+          <b-card-text>Leslie Knope (D) </b-card-text>
+          <b-button size="lg" variant="success" class="btn btn-primary active"  @click="vote('Leslie', email, tel)">Vote</b-button>
         </b-card>
 
-        <b-card bg-variant="danger" text-variant="white" header="Vote Bobby Newport" class="text-center" footer-tag="footer">
-          <b-card-text>Bobby Newport</b-card-text>
-          <b-button size="lg" variant="primary" @click="vote('Bobby', email, tel)">Button</b-button>
+        <b-card bg-variant="danger" text-variant="white" header="Republican" class="text-center" footer-tag="footer">
+          <b-card-text>Bobby Newport (R) </b-card-text>
+          <b-button size="lg" variant="success" class="btn btn-primary active" @click="vote('Bobby', email, tel)">Vote</b-button>
         </b-card>
       </b-card-group>
     </b-row>
@@ -49,6 +49,7 @@ export default {
       }
       const response = await API.post(this.apiName, '/votes', init)
       this.$refs.responseText.innerText = email + ', thank you for voting for ' + voteFor;
+      console.log(response)
     }
   }
 }
