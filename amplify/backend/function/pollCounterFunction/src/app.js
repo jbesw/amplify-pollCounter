@@ -58,7 +58,7 @@ const convertUrlType = (param, type) => {
 /********************************
  * HTTP Get method for list objects *
  ********************************/
-
+/*
 app.get(path + hashKeyPath, function(req, res) {
   var condition = {}
   condition[partitionKeyName] = {
@@ -90,11 +90,11 @@ app.get(path + hashKeyPath, function(req, res) {
     }
   });
 });
-
+*/
 /*****************************************
  * HTTP Get method for get single object *
  *****************************************/
-
+/*
 app.get(path + '/object' + hashKeyPath + sortKeyPath, function(req, res) {
   var params = {};
   if (userIdPresent && req.apiGateway) {
@@ -135,7 +135,7 @@ app.get(path + '/object' + hashKeyPath + sortKeyPath, function(req, res) {
     }
   });
 });
-
+*/
 /************************************
 * HTTP post method for insert object *
 *************************************/
@@ -144,23 +144,21 @@ app.post(path, function(req, res) {
    req.body['userId'] =
    req.apiGateway.event.requestContext.identity.cognitoIdentityId || UNAUTH;
   }
-  const UpdateAttribute = req.query['vote']
+  const UpdateAttribute = req.query['voteFor']
   const EmailAddress = req.query['email']
   const TelephoneNumber = req.query['tel']
-  let updateItemParams = {
-    TableName: tableName,
-    Key: {
-      partitionKey: 'poll-001',
-      sortKey: EmailAddress
-    },
-    UpdateExpression: `set vote = :v, tel = :t`,
-    ExpressionAttributeValues:{
-      ":v": UpdateAttribute,
-      ":t": TelephoneNumber
-    },
-    ReturnValues:"UPDATED_NEW"
+  var item = {
+    "partitionKey" : {"S" : "poll-001"},
+    "sortKey" : {"S" : EmailAddress},
+    "vote" : {"S" : UpdateAttribute},
+    "tel" : {"S" : TelephoneNumber}
   }
-  dynamodb.update(updateItemParams, (err, data) => {
+  var dbParam= {
+    TableName: tableName,
+    Item:item,
+  }
+
+  dynamodb.putItem(dbParam, (err, data) => {
     if(err) {
       res.statusCode = 500;
       res.json({error: err, url: req.url, body: req.body});
