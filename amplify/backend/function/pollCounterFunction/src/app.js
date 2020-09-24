@@ -148,17 +148,17 @@ app.post(path, function(req, res) {
   const EmailAddress = req.query['email']
   const TelephoneNumber = req.query['tel']
   var item = {
-    "partitionKey" : {"S" : "poll-001"},
-    "sortKey" : {"S" : EmailAddress},
-    "vote" : {"S" : UpdateAttribute},
-    "tel" : {"S" : TelephoneNumber}
+    partitionKey : "poll-001",
+    sortKey : EmailAddress,
+    vote : UpdateAttribute,
+    tel : TelephoneNumber
   }
-  var dbParam= {
+  var dbParam = {
     TableName: tableName,
     Item:item,
   }
 
-  dynamodb.putItem(dbParam, (err, data) => {
+  dynamodb.put(dbParam, (err, data) => {
     if(err) {
       res.statusCode = 500;
       res.json({error: err, url: req.url, body: req.body});
