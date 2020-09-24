@@ -5,8 +5,13 @@
     <h4>Please follow the steps below to register your vote</h4>
     
     <h4>Please enter your email address and telephone number</h4>
-    <b-form-input type="email" placeholder="Email address" v-model="email" /> <br>
+    <b-form-input type="email" placeholder="Email address" v-model="email" :state="emailState" aria-describedby="input-live-feedback" />
+    <b-form-invalid-feedback id="input-live-feedback">
+      Email is a required field
+    </b-form-invalid-feedback>
+    <br>
     <b-form-input type="tel" placeholder="Telephone Number" v-model="tel" /> <br>
+
 
     <b-row align-h="center" class="mt-5">
       <b-card-group deck>
@@ -30,6 +35,11 @@
 import { API } from 'aws-amplify'
 export default {
   name: 'app',
+  computed: {
+    emailState() {
+      return this.email.length > 2 ? true : false
+    }
+  },
   data() {
     return {
       apiName: 'pollCounterAPI',
