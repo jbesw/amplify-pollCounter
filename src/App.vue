@@ -14,14 +14,14 @@
         </b-card>
 
         <b-card bg-variant="danger" text-variant="white" header="Vote No" class="text-center" footer-tag="footer">
-          <b-card-text>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</b-card-text>
+          <b-card-text>Select the scenario.</b-card-text>
           <b-button size="lg" variant="primary" @click="vote('no')">Button</b-button>
           <em slot="footer">{{ votesNo }} voted</em>
         </b-card>
       </b-card-group>
     </b-row>
     <b-row align-h="center" class="mt-5">
-      <p>Questions? Ask James <a href="https://twitter.com/jbesw">@jbesw</a>.</p>
+      <p>Questions? Ask Dan <a href="https://twitter.com/germaindan">@germaindan</a>.</p>
     </b-row>
   </div>  
 </template>
